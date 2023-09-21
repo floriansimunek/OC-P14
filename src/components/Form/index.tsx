@@ -1,4 +1,87 @@
-const Form = () => {
+import Select, { Option } from '@fsmnk/react-select-menu';
+
+const Form: React.FC = () => {
+  const stateOptions: Option = [
+    { value: 'Alabama' },
+    { value: 'Alaska' },
+    { value: 'American Samoa' },
+    { value: 'Arizona' },
+    { value: 'Arkansas' },
+    { value: 'California' },
+    { value: 'Colorado' },
+    { value: 'Connecticut' },
+    { value: 'Delaware' },
+    { value: 'District Of Columbia' },
+    { value: 'Federated States Of Micronesia' },
+    { value: 'Florida' },
+    { value: 'Georgia' },
+    { value: 'Guam' },
+    { value: 'Hawaii' },
+    { value: 'Idaho' },
+    { value: 'Illinois' },
+    { value: 'Indiana' },
+    { value: 'Iowa' },
+    { value: 'Kansas' },
+    { value: 'Kentucky' },
+    { value: 'Louisiana' },
+    { value: 'Maine' },
+    { value: 'Marshall Islands' },
+    { value: 'Maryland' },
+    { value: 'Massachusetts' },
+    { value: 'Michigan' },
+    { value: 'Minnesota' },
+    { value: 'Mississippi' },
+    { value: 'Missouri' },
+    { value: 'Montana' },
+    { value: 'Nebraska' },
+    { value: 'Nevada' },
+    { value: 'New Hampshire' },
+    { value: 'New Jersey' },
+    { value: 'New Mexico' },
+    { value: 'New York' },
+    { value: 'North Carolina' },
+    { value: 'North Dakota' },
+    { value: 'Northern Mariana Islands' },
+    { value: 'Ohio' },
+    { value: 'Oklahoma' },
+    { value: 'Oregon' },
+    { value: 'Palau' },
+    { value: 'Pennsylvania' },
+    { value: 'Puerto Rico' },
+    { value: 'Rhode Island' },
+    { value: 'South Carolina' },
+    { value: 'South Dakota' },
+    { value: 'Tennessee' },
+    { value: 'Texas' },
+    { value: 'Utah' },
+    { value: 'Vermont' },
+    { value: 'Virgin Islands' },
+    { value: 'Virginia' },
+    { value: 'Washington' },
+    { value: 'West Virginia' },
+    { value: 'Wisconsin' },
+    { value: 'Wyoming' },
+  ];
+
+  const departementOptions = [
+    { value: 'Sales' },
+    { value: 'Marketing' },
+    { value: 'Engineering' },
+    { value: 'Human Resources' },
+    { value: 'Legal' },
+  ];
+
+  const selectStyles = {
+    select: {
+      width: '100%',
+      marginTop: '1rem',
+      marginBottom: '10px',
+    },
+    list: {
+      backgroundColor: 'white',
+    },
+  };
+
   return (
     <>
       <form action="#" id="create-employee">
@@ -22,87 +105,24 @@ const Form = () => {
           <label htmlFor="city">City</label>
           <input id="city" type="text" />
 
-          <label htmlFor="state-button">State</label>
-          <select name="state" id="state" style={{ display: 'none' }}>
-            <option value="AL">Alabama</option>
-            <option value="AK">Alaska</option>
-            <option value="AS">American Samoa</option>
-            <option value="AZ">Arizona</option>
-            <option value="AR">Arkansas</option>
-            <option value="CA">California</option>
-            <option value="CO">Colorado</option>
-            <option value="CT">Connecticut</option>
-            <option value="DE">Delaware</option>
-            <option value="DC">District Of Columbia</option>
-            <option value="FM">Federated States Of Micronesia</option>
-            <option value="FL">Florida</option>
-            <option value="GA">Georgia</option>
-            <option value="GU">Guam</option>
-            <option value="HI">Hawaii</option>
-            <option value="ID">Idaho</option>
-            <option value="IL">Illinois</option>
-            <option value="IN">Indiana</option>
-            <option value="IA">Iowa</option>
-            <option value="KS">Kansas</option>
-            <option value="KY">Kentucky</option>
-            <option value="LA">Louisiana</option>
-            <option value="ME">Maine</option>
-            <option value="MH">Marshall Islands</option>
-            <option value="MD">Maryland</option>
-            <option value="MA">Massachusetts</option>
-            <option value="MI">Michigan</option>
-            <option value="MN">Minnesota</option>
-            <option value="MS">Mississippi</option>
-            <option value="MO">Missouri</option>
-            <option value="MT">Montana</option>
-            <option value="NE">Nebraska</option>
-            <option value="NV">Nevada</option>
-            <option value="NH">New Hampshire</option>
-            <option value="NJ">New Jersey</option>
-            <option value="NM">New Mexico</option>
-            <option value="NY">New York</option>
-            <option value="NC">North Carolina</option>
-            <option value="ND">North Dakota</option>
-            <option value="MP">Northern Mariana Islands</option>
-            <option value="OH">Ohio</option>
-            <option value="OK">Oklahoma</option>
-            <option value="OR">Oregon</option>
-            <option value="PW">Palau</option>
-            <option value="PA">Pennsylvania</option>
-            <option value="PR">Puerto Rico</option>
-            <option value="RI">Rhode Island</option>
-            <option value="SC">South Carolina</option>
-            <option value="SD">South Dakota</option>
-            <option value="TN">Tennessee</option>
-            <option value="TX">Texas</option>
-            <option value="UT">Utah</option>
-            <option value="VT">Vermont</option>
-            <option value="VI">Virgin Islands</option>
-            <option value="VA">Virginia</option>
-            <option value="WA">Washington</option>
-            <option value="WV">West Virginia</option>
-            <option value="WI">Wisconsin</option>
-            <option value="WY">Wyoming</option>
-          </select>
-          <span
-            tabIndex={0}
-            id="state-button"
-            role="combobox"
-            aria-expanded="false"
-            aria-autocomplete="list"
-            aria-owns="state-menu"
-            aria-haspopup="true"
-            className="ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all"
-            aria-activedescendant="ui-id-1"
-            aria-labelledby="ui-id-1"
-            aria-disabled="false"
-          >
-            <span className="ui-selectmenu-icon ui-icon ui-icon-triangle-1-s"></span>
-            <span className="ui-selectmenu-text">Alabama</span>
-          </span>
+          <Select
+            id="state"
+            options={stateOptions}
+            label="State"
+            style={selectStyles}
+            defaultValue={stateOptions[0].value}
+          />
+
           <label htmlFor="zip-code">Zip Code</label>
           <input id="zip-code" type="number" />
         </fieldset>
+        <Select
+          id="departement"
+          options={departementOptions}
+          label="Department"
+          style={selectStyles}
+          defaultValue={departementOptions[0].value}
+        />
       </form>
       <button>Save</button>
     </>
