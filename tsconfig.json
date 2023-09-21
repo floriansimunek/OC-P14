@@ -24,6 +24,7 @@
     "baseUrl": "./src",
     "paths": {
       "@components/*": ["./components/*"],
+      "@pages/*": ["./pages/*"],
       "@types": ["./types/index.d.ts"]
     }
   },
