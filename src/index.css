@@ -47,3 +47,7 @@
 .ReactModal__Overlay {
   z-index: 100;
 }
+
+.react-datepicker-wrapper {
+  width: 100%;
+}

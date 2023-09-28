@@ -1,5 +1,7 @@
 import Select from '@fsmnk/react-select-menu';
 import { useState } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import Modal from 'react-modal';
 
 const Form: React.FC = () => {
@@ -366,6 +368,9 @@ const Form: React.FC = () => {
     setIsOpen(false);
   }
 
+  const [birthDate, setBirthDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date());
+
   return (
     <>
       <Modal isOpen={modalIsOpen}>
@@ -391,14 +396,24 @@ const Form: React.FC = () => {
           Date of Birth
         </label>
         <div className="mt-2">
-          <input id="date-of-birth" type="text" className="inputs" />
+          <DatePicker
+            selected={birthDate}
+            id="date-of-birth"
+            className="inputs"
+            onChange={(date) => setBirthDate(date as Date)}
+          />
         </div>
 
         <label htmlFor="start-date" className="labels">
           Start Date
         </label>
         <div className="mt-2">
-          <input id="start-date" type="text" className="inputs" />
+          <DatePicker
+            selected={startDate}
+            id="start-date"
+            className="inputs"
+            onChange={(date) => setStartDate(date as Date)}
+          />
         </div>
 
         <fieldset className="address">
