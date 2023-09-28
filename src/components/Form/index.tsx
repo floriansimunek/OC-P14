@@ -1,7 +1,7 @@
-import Select, { Option } from '@fsmnk/react-select-menu';
+import Select from '@fsmnk/react-select-menu';
 
 const Form: React.FC = () => {
-  const stateOptions: Option = [
+  const stateOptions = [
     { value: 'Alabama' },
     { value: 'Alaska' },
     { value: 'American Samoa' },
