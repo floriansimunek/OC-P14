@@ -1,4 +1,6 @@
 import Select from '@fsmnk/react-select-menu';
+import { useState } from 'react';
+import Modal from 'react-modal';
 
 const Form: React.FC = () => {
   const stateOptions = [
@@ -112,10 +114,25 @@ const Form: React.FC = () => {
     };
     employees.push(employee);
     localStorage.setItem('employees', JSON.stringify(employees));
+    openModal();
   };
+
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   return (
     <>
+      <Modal isOpen={modalIsOpen}>
+        <button onClick={closeModal}>close</button>
+        <p>Employee Created!</p>
+      </Modal>
       <form action="#" id="create-employee">
         <label htmlFor="first-name" className="labels">
           First Name
