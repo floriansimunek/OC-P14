@@ -117,25 +117,50 @@ const Form: React.FC = () => {
   return (
     <>
       <form action="#" id="create-employee">
-        <label htmlFor="first-name">First Name</label>
-        <input type="text" id="first-name" />
+        <label htmlFor="first-name" className="labels">
+          First Name
+        </label>
+        <div className="mt-2">
+          <input type="text" id="first-name" className="inputs" />
+        </div>
 
-        <label htmlFor="last-name">Last Name</label>
-        <input type="text" id="last-name" />
+        <label htmlFor="last-name" className="labels">
+          Last Name
+        </label>
+        <div className="mt-2">
+          <input type="text" id="last-name" className="inputs" />
+        </div>
 
-        <label htmlFor="date-of-birth">Date of Birth</label>
-        <input id="date-of-birth" type="text" />
+        <label htmlFor="date-of-birth" className="labels">
+          Date of Birth
+        </label>
+        <div className="mt-2">
+          <input id="date-of-birth" type="text" className="inputs" />
+        </div>
 
-        <label htmlFor="start-date">Start Date</label>
-        <input id="start-date" type="text" />
+        <label htmlFor="start-date" className="labels">
+          Start Date
+        </label>
+        <div className="mt-2">
+          <input id="start-date" type="text" className="inputs" />
+        </div>
+
         <fieldset className="address">
           <legend>Address</legend>
 
-          <label htmlFor="street">Street</label>
-          <input id="street" type="text" />
+          <label htmlFor="street" className="labels">
+            Street
+          </label>
+          <div className="mt-2">
+            <input id="street" type="text" className="inputs" />
+          </div>
 
-          <label htmlFor="city">City</label>
-          <input id="city" type="text" />
+          <label htmlFor="city" className="labels">
+            City
+          </label>
+          <div className="mt-2">
+            <input id="city" type="text" className="inputs" />
+          </div>
 
           <Select
             id="state"
@@ -143,10 +168,15 @@ const Form: React.FC = () => {
             label="State"
             style={selectStyles}
             defaultValue={stateOptions[0].value}
+            zIndex={2}
           />
 
-          <label htmlFor="zip-code">Zip Code</label>
-          <input id="zip-code" type="number" />
+          <label htmlFor="zip-code" className="labels">
+            Zip Code
+          </label>
+          <div className="mt-2">
+            <input id="zip-code" type="number" className="inputs" />
+          </div>
         </fieldset>
         <Select
           id="department"
@@ -154,9 +184,12 @@ const Form: React.FC = () => {
           label="Department"
           style={selectStyles}
           defaultValue={departementOptions[0].value}
+          zIndex={1}
         />
       </form>
-      <button onClick={saveEmployee}>Save</button>
+      <button onClick={saveEmployee} className="button">
+        Save
+      </button>
     </>
   );
 };
