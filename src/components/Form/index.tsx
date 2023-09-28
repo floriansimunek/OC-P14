@@ -1,7 +1,7 @@
-import Select, { Option } from '@fsmnk/react-select-menu';
+import Select from '@fsmnk/react-select-menu';
 
 const Form: React.FC = () => {
-  const stateOptions: Option = [
+  const stateOptions = [
     { value: 'Alabama' },
     { value: 'Alaska' },
     { value: 'American Samoa' },
@@ -82,6 +82,38 @@ const Form: React.FC = () => {
     },
   };
 
+  const saveEmployee = () => {
+    const firstName = document.getElementById('first-name') as HTMLInputElement;
+    const lastName = document.getElementById('last-name') as HTMLInputElement;
+    const dateOfBirth = document.getElementById(
+      'date-of-birth',
+    ) as HTMLInputElement;
+    const startDate = document.getElementById('start-date') as HTMLInputElement;
+    const department = document.getElementById(
+      'rsm-department',
+    ) as HTMLInputElement;
+    const street = document.getElementById('street') as HTMLInputElement;
+    const city = document.getElementById('city') as HTMLInputElement;
+    const state = document.getElementById('rsm-state') as HTMLInputElement;
+    const zipCode = document.getElementById('zip-code') as HTMLInputElement;
+
+    const storedEmployees = localStorage.getItem('employees');
+    const employees = storedEmployees ? JSON.parse(storedEmployees) : [];
+    const employee = {
+      firstName: firstName.value,
+      lastName: lastName.value,
+      dateOfBirth: dateOfBirth.value,
+      startDate: startDate.value,
+      department: department.value,
+      street: street.value,
+      city: city.value,
+      state: state.value,
+      zipCode: zipCode.value,
+    };
+    employees.push(employee);
+    localStorage.setItem('employees', JSON.stringify(employees));
+  };
+
   return (
     <>
       <form action="#" id="create-employee">
@@ -117,14 +149,14 @@ const Form: React.FC = () => {
           <input id="zip-code" type="number" />
         </fieldset>
         <Select
-          id="departement"
+          id="department"
           options={departementOptions}
           label="Department"
           style={selectStyles}
           defaultValue={departementOptions[0].value}
         />
       </form>
-      <button>Save</button>
+      <button onClick={saveEmployee}>Save</button>
     </>
   );
 };
