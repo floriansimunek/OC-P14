@@ -1,10 +1,22 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+type Employee = {
+  firstName?: string;
+  lastName?: string;
+  dateOfBirth?: string;
+  startDate?: string;
+  department?: string;
+  street?: string;
+  city?: string;
+  employeeState?: string;
+  zipCode?: string;
+};
 
 const employeeSlice = createSlice({
   name: 'employee',
-  initialState: [],
+  initialState: [] as Employee[],
   reducers: {
-    saveEmployee: (state, action) => {
+    saveEmployee: (state, action: PayloadAction<Employee>) => {
       const {
         firstName,
         lastName,
