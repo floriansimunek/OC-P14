@@ -1,10 +1,14 @@
 import Select from '@fsmnk/react-select-menu';
+import { saveEmployee } from '@store/slices/employee';
 import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Modal from 'react-modal';
+import { useDispatch } from 'react-redux';
 
 const Form: React.FC = () => {
+  const dispatch = useDispatch();
+
   const stateOptions = [
     { value: 'Alabama' },
     { value: 'Alaska' },
@@ -325,7 +329,7 @@ const Form: React.FC = () => {
     },
   ];
 
-  const saveEmployee = () => {
+  const handleSaveEmployee = () => {
     const firstName = document.getElementById('first-name') as HTMLInputElement;
     const lastName = document.getElementById('last-name') as HTMLInputElement;
     const dateOfBirth = document.getElementById(
@@ -340,8 +344,6 @@ const Form: React.FC = () => {
     const state = document.getElementById('rsm-state') as HTMLInputElement;
     const zipCode = document.getElementById('zip-code') as HTMLInputElement;
 
-    const storedEmployees = localStorage.getItem('employees');
-    const employees = storedEmployees ? JSON.parse(storedEmployees) : [];
     const employee = {
       firstName: firstName.value,
       lastName: lastName.value,
@@ -350,11 +352,10 @@ const Form: React.FC = () => {
       department: department.value,
       street: street.value,
       city: city.value,
-      state: states.find((s) => state.value === s.name)?.abbreviation,
+      employeeState: states.find((s) => state.value === s.name)?.abbreviation,
       zipCode: zipCode.value,
     };
-    employees.push(employee);
-    localStorage.setItem('employees', JSON.stringify(employees));
+    dispatch(saveEmployee(employee));
     openModal();
   };
 
@@ -458,7 +459,7 @@ const Form: React.FC = () => {
           zIndex={1}
         />
       </form>
-      <button onClick={saveEmployee} className="button">
+      <button onClick={handleSaveEmployee} className="button">
         Save
       </button>
     </>

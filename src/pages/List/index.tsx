@@ -1,7 +1,10 @@
 import DataTable from '@ognimelo/hrnet-datatable';
+import { RootState } from '@store/index';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const List = () => {
+  const employees = useSelector((state: RootState) => [...state.employee]);
   const columns = [
     { title: 'First Name', data: 'firstName' },
     { title: 'Last Name', data: 'lastName' },
@@ -13,8 +16,6 @@ const List = () => {
     { title: 'State', data: 'state' },
     { title: 'Zip Code', data: 'zipCode' },
   ];
-  const storedEmployees = localStorage.getItem('employees');
-  const employees = storedEmployees ? JSON.parse(storedEmployees) : [];
 
   return (
     <>
